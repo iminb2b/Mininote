@@ -2,8 +2,6 @@ import { css, Global } from "@emotion/react";
 import { FC, memo, ReactNode, useContext, useEffect } from "react";
 import Header from "./Header";
 import globalStyles from "@/styles/globalStyles";
-import { cursorStyle, outerCursorStyle } from "@/styles/cursorStyles";
-import AnimatedCursor from "react-animated-cursor";
 import { AppContext } from "@/context/AppContext";
 import colors from "@/value/colors";
 
@@ -44,29 +42,7 @@ const Layout: FC<{
     <div css={pageContainer({ darkmode })}>
       <Global styles={globalStyles} />
 
-      <AnimatedCursor
-        innerSize={10}
-        outerSize={9}
-        color="245, 145, 238"
-        outerAlpha={0.01}
-        innerScale={0.7}
-        outerScale={1}
-        clickables={[
-          "a",
-          'input[type="text"]',
-          'input[type="email"]',
-          'input[type="number"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          "label[for]",
-          "select",
-          "textarea",
-          "button",
-          ".link",
-        ]}
-        innerStyle={cursorStyle}
-        outerStyle={outerCursorStyle}
-      />
+
 
       <Header />
 

@@ -5,8 +5,6 @@ import Logo from "./Logo";
 import { contentContainer } from "@/styles/generalStyles";
 import NavList from "./Nav/NavList";
 import { useDialogStore } from "@ariakit/react";
-import NavMenuMobileButton from "./Nav/NavMenuMobileButton";
-import NavListMobile from "./Nav/NavListMobile";
 const container = ({ scrollNav }: { scrollNav: boolean }) => css`
   width: 100%;
   position: sticky;
@@ -97,11 +95,6 @@ const Header: FC = () => {
         <Logo />
         <NavList />
 
-        <NavMenuMobileButton dialogStore={mobileHeaderNavDialogStore} />
-
-        {mobileHeaderNavDialogIsMounted && (
-          <NavListMobile dialogStore={mobileHeaderNavDialogStore} />
-        )}
       </div>
     </div>
   );

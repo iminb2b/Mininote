@@ -5,11 +5,7 @@ const nextConfig = {
     emotion: true,
   },
   redirects: async () => [
-    {
-      source: "/",
-      destination: "/en",
-      permanent: true
-    },
+
   ]
 
 

@@ -27,5 +27,8 @@
     "darkmode",
     "nextjs",
     "styledcomponent"
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
 }
