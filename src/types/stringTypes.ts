@@ -1,7 +1,7 @@
 export type SharedStrings = {
-  // button: {
-  //   viewProjects: string;
-  // };
+  button: {
+    viewProjects: string;
+  };
 };
 
 export type Strings = {

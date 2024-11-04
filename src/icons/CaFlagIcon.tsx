@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { css } from "@emotion/react";
 
 const CaFlagIcon: FC = () => {
   return (

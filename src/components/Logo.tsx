@@ -4,7 +4,6 @@ import { css } from "@emotion/react";
 import colors from "@/value/colors";
 import routeLinks from "@/routeLinks";
 import { AppContext } from "@/context/AppContext";
-
 const logo = css`
   font-size: 2rem;
   font-weight: 700;

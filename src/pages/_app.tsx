@@ -8,7 +8,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { AppContextType, AppProvider } from "@/context/AppContext";
 import { useEffect } from "react";
-import routeLinks from "@/routeLinks";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

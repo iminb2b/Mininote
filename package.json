@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "eslint": "eslint .",
     "ts-json-schema-generator": "ts-json-schema-generator --no-type-check --out='src/strings/strings.schema.json' --path='src/types/stringTypes.ts' --tsconfig='tsconfig.json' --type='Strings'"
   },
   "browser": {
@@ -24,8 +25,8 @@
     "keen-slider": "^6.8.6",
     "nanoid": "^5.0.8",
     "next": "14.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-scroll": "^1.9.0",
     "sharp": "^0.33.2",
     "ts-json-schema-generator": "^1.1.2",
@@ -36,8 +37,11 @@
     "@types/node": "^20",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
-    "eslint": "^8",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "@typescript-eslint/parser": "^8.12.2",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.0.4",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "typescript": "^5"
   }
 }

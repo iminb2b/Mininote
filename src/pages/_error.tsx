@@ -1,7 +1,7 @@
 import ErrorPageContent from "@/components/ErrorPageContent";
 import { NextPage } from "next";
 
-const ErrorPage: NextPage = (props) => {
+const ErrorPage: NextPage = () => {
   return <ErrorPageContent />;
 };
 

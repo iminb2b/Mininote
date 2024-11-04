@@ -28,11 +28,14 @@ const Title: FC<TitleProps> = ({ title, changPageTitle, addNode }) => {
     if (!isFocused && headerRef.current) {
       headerRef.current.textContent = title;
     }
-  }, []);
+  }, [title]);
 
-  const onInput: FormEventHandler<HTMLHeadingElement> = useCallback((event) => {
-    changPageTitle(event.currentTarget.textContent || "");
-  }, []);
+  const onInput: FormEventHandler<HTMLHeadingElement> = useCallback(
+    (event) => {
+      changPageTitle(event.currentTarget.textContent || "");
+    },
+    [changPageTitle],
+  );
 
   const onKeyDown: KeyboardEventHandler<HTMLHeadingElement> = useCallback(
     (event) => {
@@ -41,11 +44,11 @@ const Title: FC<TitleProps> = ({ title, changPageTitle, addNode }) => {
         addNode({ node: { type: "text", id: nanoid(), value: "" }, index: 0 });
       }
     },
-    [],
+    [addNode],
   );
 
   return (
-    <div>
+    <div css={container}>
       <h1
         css={titleText}
         contentEditable

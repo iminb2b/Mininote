@@ -6,7 +6,6 @@ import {
   sectionService,
   sectionTitle,
 } from "@/styles/generalStyles";
-import colors from "@/value/colors";
 import HomePageProjectsListItem from "./HomePageProjectsListItem";
 import Link from "next/link";
 import routeLinks from "@/routeLinks";
