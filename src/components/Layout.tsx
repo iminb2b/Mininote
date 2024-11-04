@@ -36,13 +36,11 @@ const Layout: FC<{
     const darkMode = localStorage.getItem("darkmode") === "true";
 
     dispatch({ type: "enableDarkMode", payload: darkMode });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div css={pageContainer({ darkmode })}>
       <Global styles={globalStyles} />
-
-
 
       <Header />
 

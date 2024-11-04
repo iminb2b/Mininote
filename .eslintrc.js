@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/no-unknown-property": "off",
+    "react/prop-types": "off",
     // Add any additional rules or overrides here
   },
   settings: {

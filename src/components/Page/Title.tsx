@@ -1,26 +1,27 @@
-import { NodeData } from "@/types/nodeType";
 import { css } from "@emotion/react";
 import {
   FC,
   FormEventHandler,
   KeyboardEventHandler,
   useCallback,
+  useContext,
   useEffect,
   useRef,
 } from "react";
 import { nanoid } from "nanoid";
-
-type TitleProps = {
-  title: string;
-  changPageTitle: (title: string) => void;
-  addNode: (params: { node: NodeData; index: number }) => void;
-};
+import { AppContext } from "@/context/AppContext";
 
 const container = css``;
 const titleText = css``;
 
-const Title: FC<TitleProps> = ({ title, changPageTitle, addNode }) => {
+const Title: FC = () => {
   const headerRef = useRef<HTMLHeadingElement>(null);
+  const {
+    state: {
+      page: { title },
+    },
+    dispatch,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const isFocused = document.activeElement === headerRef.current;
@@ -32,19 +33,26 @@ const Title: FC<TitleProps> = ({ title, changPageTitle, addNode }) => {
 
   const onInput: FormEventHandler<HTMLHeadingElement> = useCallback(
     (event) => {
-      changPageTitle(event.currentTarget.textContent || "");
+      dispatch({
+        type: "setTitle",
+        title: event.currentTarget.textContent || "",
+      });
     },
-    [changPageTitle],
+    [dispatch],
   );
 
   const onKeyDown: KeyboardEventHandler<HTMLHeadingElement> = useCallback(
     (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        addNode({ node: { type: "text", id: nanoid(), value: "" }, index: 0 });
+        dispatch({
+          type: "addNode",
+          node: { type: "text", id: nanoid(), value: "" },
+          index: 0,
+        });
       }
     },
-    [addNode],
+    [dispatch],
   );
 
   return (

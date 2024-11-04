@@ -30,7 +30,8 @@
     "react-scroll": "^1.9.0",
     "sharp": "^0.33.2",
     "ts-json-schema-generator": "^1.1.2",
-    "ts-pattern": "^5.0.8"
+    "ts-pattern": "^5.5.0",
+    "use-immer": "^0.10.0"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",

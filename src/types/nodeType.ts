@@ -18,5 +18,4 @@ export type Page = {
   slug: string;
   title: string;
   nodes: NodeData[];
-  cover: string;
 };

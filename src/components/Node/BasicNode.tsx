@@ -1,3 +1,4 @@
+import { AppContext } from "@/context/AppContext";
 import { NodeData } from "@/types/nodeType";
 import { nanoid } from "nanoid";
 import {
@@ -5,6 +6,7 @@ import {
   FormEventHandler,
   KeyboardEventHandler,
   useCallback,
+  useContext,
   useEffect,
   useRef,
 } from "react";
@@ -14,19 +16,10 @@ const BasicNode: FC<{
   updateFocusedIndex: (index: number) => void;
   isFocused: boolean;
   index: number;
-  addNode: (params: { node: NodeData; index: number }) => void;
-  removeNodeByIndex: (index: number) => void;
-  changeNodeValue: (params: { index: number; value: string }) => void;
-}> = ({
-  node,
-  updateFocusedIndex,
-  isFocused,
-  addNode,
-  index,
-  removeNodeByIndex,
-  changeNodeValue,
-}) => {
+}> = ({ node, updateFocusedIndex, isFocused, index }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
+
+  const { dispatch } = useContext(AppContext);
 
   useEffect(() => {
     if (isFocused) {
@@ -46,14 +39,18 @@ const BasicNode: FC<{
     ({ currentTarget }) => {
       const { textContent } = currentTarget;
 
-      changeNodeValue({ index, value: textContent || "" });
+      dispatch({
+        type: "changeNodeValue",
+        nodeIndex: index,
+        value: textContent || "",
+      });
     },
-    [],
+    [dispatch, index],
   );
 
   const handleClick = useCallback(() => {
     updateFocusedIndex(index);
-  }, []);
+  }, [index, updateFocusedIndex]);
 
   const onKeyDown: KeyboardEventHandler<HTMLDivElement> = useCallback(
     (event) => {
@@ -65,7 +62,8 @@ const BasicNode: FC<{
           return;
         }
 
-        addNode({
+        dispatch({
+          type: "addNode",
           node: { type: node.type, value: "", id: nanoid() },
           index: index + 1,
         });
@@ -76,16 +74,16 @@ const BasicNode: FC<{
       if (event.key === "Backspace") {
         if (target.textContent?.length === 0) {
           event.preventDefault();
-          removeNodeByIndex(index);
+          dispatch({ type: "removeNodeByIndex", nodeIndex: index });
           updateFocusedIndex(index - 1);
         } else if (window?.getSelection()?.anchorOffset === 0) {
           event.preventDefault();
-          removeNodeByIndex(index - 1);
+          dispatch({ type: "removeNodeByIndex", nodeIndex: index - 1 });
           updateFocusedIndex(index - 1);
         }
       }
     },
-    [],
+    [dispatch, index, node.type, updateFocusedIndex],
   );
 
   return (

@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
     strings: localeStrings,
     lang: localeInfo === "vi" ? "vi" : "en",
     darkmode: false,
+    page: { id: "", slug: "", title: "", nodes: [] },
   };
 
   useEffect(() => {
